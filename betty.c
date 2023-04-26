@@ -1,12 +1,12 @@
 #include <stdio.h>
 /**
- * betty_check - A code that passes the betty check
- * 
+ * main - A code that passes the betty check
+ *
  * Return: returns 0
  */
 
-int main()
+int main(void)
 {
-	printf("Hello World!");
-	return 0;
+	write("Hello World!");
+	return (0);
 }
