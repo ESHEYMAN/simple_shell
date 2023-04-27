@@ -13,8 +13,6 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <linux/limits.h>
-#include "general.h"
-#include "macros.h"
 
 /* for read/write buffers */
 #define READ_BUF_SIZE 1024
