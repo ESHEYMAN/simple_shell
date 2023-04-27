@@ -7,6 +7,6 @@
 
 int main(void)
 {
-	write("Hello World!");
+	fwrite("Hello World!");
 	return (0);
 }
