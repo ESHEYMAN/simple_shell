@@ -16,6 +16,28 @@
 #include "general.h"
 #include "macros.h"
 
+/* for read/write buffers */
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
+/* for command chaining */
+#define CMD_NORM	0
+#define CMD_OR		1
+#define CMD_AND		2
+#define CMD_CHAIN	3
+
+/* for convert_number() */
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
+
+/* 1 if using system getline() */
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+
+#define HIST_FILE	".simple_shell_history"
+#define HIST_MAX	4096
+
 /* This is a pointer that point to the string environ */
 extern char **environ;
 
@@ -148,13 +170,20 @@ int is_executable(char *filename);
 int is_filed(char *command);
 
 /* environment.c */
-char *_getenv(const char *name);
-char *which(char *filename, general_t *info);
-void is_current_path(char *path, general_t *info);
-void get_full_env(void);
+char *_get_environ(const char *name);
+char *what(char *filename, general_t *info);
+void is_main_path(char *path, general_t *info);
+void get_all_environ(void);
 
 /* execute.c */
 void execute(char *commands, char **arguments, general_t *info, char *buff);
 int current_dir(char *cmd, char **arguments, char *buff, general_t *info);
+
+int exitmode(info_m *info);
+int ccd(info_m *info);
+int hhelp(info_m *info);
+
+/* env builtin */
+void buitn_env(general_t *info, char **arguments)
 
 #endif
