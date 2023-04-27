@@ -39,9 +39,6 @@
 /* This is a pointer that point to the string environ */
 extern char **environ;
 
-/* entry point of the shell */
-void start(general_t *info);
-
 /**
  * struct repeat_var_list - this is a linked list struct
  * @num: this is use to store the len of the variable
@@ -99,8 +96,9 @@ typedef struct line_sep
  */
 typedef struct builtin
 {
-	int (*function)(info_m);
+	int (*funct)(info_m *);
 	char *type;
+} builtin_table;
 
 /**
  * struct shell data - used to store response and input from the user
