@@ -155,6 +155,6 @@ void get_full_env(void);
 
 /* execute.c */
 void execute(char *commands, char **arguments, general_t *info, char *buff);
-int current_dir(char *cmd, char **arguments, char *buff,
+int current_dir(char *cmd, char **arguments, char *buff, general_t *info);
 
-#endif		general_t *info);
+#endif
