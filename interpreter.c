@@ -6,7 +6,7 @@
  * @buff: lines re-added
  */
 
-void analyze(char **arguments, char *buff, general_t *info)
+void analyse(char **arguments, char *buff, general_t *info)
 {
 	int status;
 	char *comd;
@@ -33,7 +33,7 @@ if (status == 1)
 	return (0);
 }
 
-if (current_directory(comd, arguments, buff, info) == _TRUE)
+if (current_dir(comd, arguments, buff, info) == _TRUE)
 	return (0);
 
 	info->value_path = which(comd, info);
