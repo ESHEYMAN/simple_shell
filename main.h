@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib h>
-#include  <errno.h>
+#include <errno.h>
 #include <unistd.h>
 #include <string h>
 #include <sys/types.h>
@@ -74,14 +74,13 @@ typedef struct line_sep
 
 /**
  * struct builtins - struct for the builtins
- * @builtin: the name of the builtin
- * @function: the function to be called for builtin
+ * @type: the name of the builtin
+ * @function: the function
  */
-typedef struct builtins
+typedef struct builtin
 {
-	int (*function)(data_of_program);
-	char *builtin;
-} builtins;
+	int (*function)(info_m);
+	char *type;
 
 /**
  * struct shell data - used to store response and input from the user
@@ -136,4 +135,7 @@ typedef struct based_s
 
 /* main functions */
 
-
+void find_cmd(info_m *);
+void fork_cmd(info_m *);
+int hsh(info_m *, char **);
+int find_builtin(info_m *);
