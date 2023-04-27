@@ -34,7 +34,11 @@ void analyse(char **arguments, char *buff, general_t *info)
 	return (0);
 }
 
+<<<<<<< HEAD
 	if (current_dir(comd, arguments, buff, info) == _TRUE)
+=======
+if (current_dir(comd, arguments, buff, info) == _TRUE)
+>>>>>>> be9fe1ff8de02e5d02266fdc90bd0f86c907b26e
 	return (0);
 
 	info->value_path = which(comd, info);
