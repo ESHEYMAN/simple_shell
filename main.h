@@ -96,7 +96,7 @@ typedef struct line_sep
  */
 typedef struct builtin
 {
-	int (*funct)(info_m *);
+	int (*funct)(info_t *);
 	char *type;
 } builtin_table;
 
@@ -153,10 +153,10 @@ typedef struct based_s
 
 /* main functions */
 
-void find_cmd(info_m *);
-void fork_cmd(info_m *);
-int hsh(info_m *, char **);
-int find_builtin(info_m *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
 
 /* interpreter and permission */
 void analyse(char **arguments, general_t *info, char *buff);
@@ -176,8 +176,8 @@ void execute(char *commands, char **arguments, general_t *info, char *buff);
 int current_dir(char *cmd, char **arguments, char *buff, general_t *info);
 
 int exitmode(info_m *info);
-int ccd(info_m *info);
-int hhelp(info_m *info);
+int ccd(info_t *info);
+int hhelp(info_t *info);
 
 /* env builtin */
 void buitn_env(general_t *info, char **arguments)
