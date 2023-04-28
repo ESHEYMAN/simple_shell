@@ -109,9 +109,6 @@ typedef struct passinfo
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
 	char **environ;
 	int env_changed;
 	int status;
@@ -257,11 +254,9 @@ void get_all_environ(void);
 void execute(char *commands, char **arguments, general_t *info, char *buff);
 int current_dir(char *cmd, char **arguments, char *buff, general_t *info);
 
-int exitmode(info_m *info);
+int exitmode(info_t *info);
 int ccd(info_t *info);
 int hhelp(info_t *info);
 
-/* env builtin */
-void buitn_env(general_t *info, char **arguments)
 
 #endif
