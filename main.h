@@ -78,6 +78,69 @@ typedef struct info
 } data_of_program;
 
 /**
+ *struct passinfo - contains pseudo-arguements to pass into a function,
+ *		allowing uniform prototype for function pointer struct
+ *@arg: a string generated from getline containing arguements
+ *@argv: an array of strings generated from arg
+ *@path: a string path for the current command
+ *@argc: the argument count
+ *@line_count: the error count
+ *@err_num: the error code for exit()s
+ *@linecount_flag: if on count this line of input
+ *@fname: the program filename
+ *@env: linked list local copy of environ
+ *@environ: custom modified copy of environ from LL env
+ *@history: the history node
+ *@alias: the alias node
+ *@env_changed: on if environ was changed
+ *@status: the return status of the last exec'd command
+ *@cmd_buf: address of pointer to cmd_buf, on if chaining
+ *@cmd_buf_type: CMD_type ||, &&, ;
+ *@readfd: the fd from which to read line input
+ *@histcount: the history line number count
+ */
+typedef struct passinfo
+{
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int readfd;
+	int histcount;
+}
+info_t;
+
+typedef struct __attribute__((__packed__))
+{
+	int argc;                 /* Number of arguments received */
+	char **argv;              /* Arguments received */
+	int mode;                 /* INTERACTIVE or NON_INTERACTIVE */
+	int error_code;           /* Error code for error message */
+	char *command;            /* Command to execute */
+	int n_commands;           /* Number of commands executed */
+	char *value_path;         /* Path of a command */
+	int is_current_path;      /* Check if is current path or not */
+	int status_code;          /* Last exit code */
+	char *buffer;             /* Line readed with the getline */
+	char **arguments;         /* Line splited into words */
+	char *environment;        /* Last environment variable get it */
+	int pid;                  /* Process id */
+} general_t;
+
+/**
  * struct line_sep - this is a linked list that checks the operator
  * @sep_operator: this char checks for the operator
  * @next: a pointer that points to the next node
@@ -87,7 +150,8 @@ typedef struct line_sep
 {
 	char sep_operator;
 	struct line_sep *next;
-} cmd_sep;
+}
+cmd_sep;
 
 /**
  * struct builtins - struct for the builtins
@@ -98,7 +162,8 @@ typedef struct builtin
 {
 	int (*funct)(info_t *);
 	char *type;
-} builtin_table;
+}
+builtin_table;
 
 /**
  * struct shell data - used to store response and input from the user
@@ -122,7 +187,8 @@ typedef struct shell_data
 	char *shdata;
 	int argc;
 	int status;
-} data_shell;
+}
+data_shell;
 
 /**
  * struct based_s - this is a inbuilt struct fot the shell
@@ -133,7 +199,8 @@ typedef struct based_s
 {
 	char *cmd_name;
 	int (*flag)(data_shell *data);
-} based_sys;
+}
+based_sys;
 
 /**
  * initialise the based_sys with an array of input coomand
