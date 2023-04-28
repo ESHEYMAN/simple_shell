@@ -165,6 +165,21 @@ typedef struct builtin
 }
 builtin_table;
 
+
+/**
+ * struct liststr - singly linked list
+ * @num: the number field
+ * @str: a string
+ * @next: points to the next node
+ */
+typedef struct liststr
+{
+	int num;
+	char *str;
+	struct liststr *next;
+}
+list_t;
+
 /**
  * struct shell data - used to store response and input from the user
  * @argv: the array of argument vector of string
